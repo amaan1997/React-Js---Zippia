@@ -48,7 +48,9 @@ const Jobs = (props) => {
 		}
     }
 	useEffect(() => {
+        // eslint-disable-next-line
 		setJobDetails()
+        // eslint-disable-next-line
 	}, [jobList,jobsByCompany]);
 
 	const onPageChange = (event, page) => {

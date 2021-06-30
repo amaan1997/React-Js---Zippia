@@ -10,6 +10,7 @@ const AutoComplete = ({ heading, data, handleChange, currentValue, handleSelect 
 				id={heading}
 				options={data}
 				getOptionLabel={(option) => option.label}
+                // eslint-disable-next-line
 				renderInput={(params) => <TextField {...params} variant="standard" label={heading} variant="outlined" />}
 				onInputChange={(e, newValue) => {
 					handleChange(newValue);
