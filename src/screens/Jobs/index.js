@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
@@ -19,8 +20,8 @@ const Jobs = (props) => {
 
 	const state = get(props.location, 'state', '');
 	const jobTitle = get(state, 'jobTitle', '');
-	const location = get(state, 'location', '');
 	const searchCategory = get(state, 'searchCategory', '');
+	const location = get(state, 'location', '');
 	const company = get(state, 'company', '');
 
 	const jobList = useSelector((state) => state.jobs.jobList);
@@ -31,28 +32,25 @@ const Jobs = (props) => {
 	const [ jobs, setJobs ] = useState([]);
 	const [ selectedDateRange, setSelectedDate ] = useState('');
 
-	// Function to filter records based on current page
-	const setJobDetails = () => {
-		let response = [];
-		if (searchCategory === 'location') {
-			response = get(jobList, 'jobs', []);
-		} else {
-			response = get(jobsByCompany, 'jobs', []);
-		}
-
-		if (response.length > 0) {
-			setTotalPages(response.length / 10);
-			setJobs(response.slice(0, 10));
-		} else {
-			setTotalPages(1);
-			setJobs([]);
-		}
-	};
 	useEffect(
 		() => {
-			// eslint-disable-next-line
-			setJobDetails();
-			// eslint-disable-next-line
+			// filter records based on current page
+			let response = [];
+
+
+			if (searchCategory === 'location') {
+				response = get(jobList, 'jobs', []);
+			} else {
+				response = get(jobsByCompany, 'jobs', []);
+			}
+
+			if (response.length > 0) {
+				setTotalPages(response.length / 10);
+				setJobs(response.slice(0, 10));
+			} else {
+				setTotalPages(1);
+				setJobs([]);
+			}
 		},
 		[ jobList, jobsByCompany ]
 	);
@@ -146,7 +144,11 @@ const Jobs = (props) => {
 							<Pagination count={totalPages} color="primary" onChange={onPageChange} page={currentPage} />
 						</Box>
 					</React.Fragment>
-				) : <Box fontSize={24} textAlign="center" style={{color:'#ff4d4f'}}>Sorry No Jobs Found as per your search!</Box>}
+				) : (
+					<Box fontSize={24} textAlign="center" style={{ color: '#ff4d4f' }}>
+						Sorry No Jobs Found as per your search!
+					</Box>
+				)}
 			</Box>
 		</React.Fragment>
 	);
