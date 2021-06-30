@@ -1,8 +1,10 @@
+/* eslint-disable */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { TextField } from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import PropTypes from 'prop-types';
 
+// Custom Component for Autocomplete
 const AutoComplete = ({ heading, data, handleChange, currentValue, handleSelect }) => {
 	return (
 		<div style={{ width: 400 }}>
@@ -10,12 +12,11 @@ const AutoComplete = ({ heading, data, handleChange, currentValue, handleSelect 
 				id={heading}
 				options={data}
 				getOptionLabel={(option) => option.label}
-                // eslint-disable-next-line
 				renderInput={(params) => <TextField {...params} variant="standard" label={heading} variant="outlined" />}
 				onInputChange={(e, newValue) => {
-					handleChange(newValue);
+					handleChange(newValue); // function called whenever input in the field changes
 				}}
-				onChange={(e, newValue) => {
+				onChange={(e, newValue) => {   // function called on selecting input
 					handleSelect(newValue);
 				}}
 				value={currentValue}

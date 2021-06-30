@@ -1,7 +1,7 @@
 import * as actionTypes from '../actionTypes';
 import axios from 'axios';
 
-
+// Function for  getting list of all the locations  based on user search
 export const getAllLocations = (searchString) => {
 	return async (dispatch) => {
 		return axios.get(`${actionTypes.API_URL}/autocomplete/location/?searchString=${searchString}&extended=true`).then((result) => {
@@ -19,6 +19,7 @@ export const getAllLocationsSuccess = (res) => {
 export const getAllLocationsFailed = (res) => {
 	return { type: actionTypes.GET_ALL_LOCATION_FAILED, res };
 };
+// Function for  getting list of all the jobs  based on user search
 export const getAllJobTitle = (searchString) => {
 	return async (dispatch) => {
 		return axios.get(`${actionTypes.API_URL}/autocomplete/source/?searchString=${searchString}`).then((result) => {
@@ -36,6 +37,7 @@ export const getAllJobTitleSuccess = (res) => {
 export const getAllJobTitleFailed = () => {
 	return { type: actionTypes.GET_ALL_JOB_TITLE_FAILED };
 };
+// Function for  getting list of jobs based on location and jobTitle
 export const getJobList = (data) => {
 	return async (dispatch) => {
 		return axios.post(`${actionTypes.API_URL}/api/jobs/`,data).then((result) => {
@@ -54,6 +56,7 @@ export const getJobListFailed = (res) => {
 	return { type: actionTypes.GET_JOB_LIST_FAILED, res };
 };
 
+// Function for  getting list of all the companies based on user search
 export const getCompanyList = (searchString) => {
 	return async (dispatch) => {
 		return axios.get(`${actionTypes.API_URL}/autocomplete/company/?searchString=${searchString}&indexableOnly=true`).then((result) => {
@@ -71,6 +74,7 @@ export const getCompanyListSuccess = (res) => {
 export const getCompanyListFailed = () => {
 	return { type: actionTypes.GET_COMPANY_LIST_FAILED };
 };
+// Function for  getting list of jobs based on company Id
 export const getJobsByCompany = (data) => {
 	return async (dispatch) => {
 		return axios.post(`${actionTypes.API_URL}/api/getCompanyJobs`,data).then((result) => {

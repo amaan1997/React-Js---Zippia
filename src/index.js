@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import CustomThemeProvider from './Themes/customThemeProvider';
 
+// default Theme is created in the deafult.js file inside themes directory 
 ReactDOM.render(
 	<CustomThemeProvider>
 		<React.StrictMode>

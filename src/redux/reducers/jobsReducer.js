@@ -6,9 +6,10 @@ const intialState = {
 	jobTitleList: [],
 	jobTitleRes: [],
 	companyList: [],
-    jobsByCompany:[]
+	jobsByCompany: []
 };
 
+// immer is used for maintaing immutability nature of state object
 export default function authReducer(state = { ...intialState }, action) {
 	switch (action.type) {
 		case 'GET_ALL_LOCATION_SUCCESS':
