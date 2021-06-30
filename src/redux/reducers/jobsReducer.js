@@ -1,4 +1,3 @@
-import * as types from '../actionTypes';
 import produce from 'immer';
 
 const intialState = {

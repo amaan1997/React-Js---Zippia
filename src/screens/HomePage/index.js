@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Box, CircularProgress, Button } from '@material-ui/core';
+import { Box, Button } from '@material-ui/core';
 import Autocomplete from '../../components/AutoComplete';
 import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
 import { getAllJobTitle, getAllLocations, getCompanyList, getJobList,getJobsByCompany } from '../../redux/actions/jobsActions';
@@ -45,7 +45,7 @@ const HomePage = ({ history }) => {
 				title: jobTitle,
 				fetchJobDesc: true
 			};
-			if (location.type == 'state') {
+			if (location.type === 'state') {
 				requestData = {
 					...requestData,
 					locations: [ { state: location.value } ]
@@ -66,7 +66,7 @@ const HomePage = ({ history }) => {
 				state: {
                     searchCategory:'location',
 					jobTitle,
-					location: location.type == 'state' ? location.value : location.value.split(',')[0],
+					location: location.type === 'state' ? location.value : location.value.split(',')[0],
                     requestData:requestData
 				}
 			});

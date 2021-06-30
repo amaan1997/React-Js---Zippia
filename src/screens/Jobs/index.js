@@ -33,7 +33,7 @@ const Jobs = (props) => {
 
     const setJobDetails=()=>{
         let response = [];
-		if (searchCategory == 'location') {
+		if (searchCategory === 'location') {
 			response = get(jobList, 'jobs', []);
 		} else {
 			response = get(jobsByCompany, 'jobs', []);
@@ -53,7 +53,7 @@ const Jobs = (props) => {
 
 	const onPageChange = (event, page) => {
 		let response = [];
-		if (searchCategory == 'location') {
+		if (searchCategory === 'location') {
 			response = get(jobList, 'jobs', []);
 		} else {
 			response = get(jobsByCompany, 'jobs', []);
@@ -77,7 +77,7 @@ const Jobs = (props) => {
                 ...requestData,
                 postingDateRange:value
             }
-            if(searchCategory == 'location'){
+            if(searchCategory === 'location'){
                 await dispatch(getJobList(data));
             }
             else{
